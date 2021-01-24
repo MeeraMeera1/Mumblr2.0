@@ -5,7 +5,9 @@ const csurf = require('csurf');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const { environment } = require('./config');
+const { ValidationError } = require('sequelize');
 const routes = require('./routes');
+
 
 const isProduction = environment === 'production';
 
@@ -46,6 +48,14 @@ app.use((_req, res, next) => {
     err.title = "Resource Not Found";
     err.errors = ["The requested resource couldn't be found."];
     err.status = 404;
+    next(err);
+});
+
+app.use((err, _req, _res, next) => {
+    if(err instanceof ValidationError) {
+        err.errors = err.errors.map((e) => e.message);
+        err.title = 'Validation error';
+    }
     next(err);
 });
 
