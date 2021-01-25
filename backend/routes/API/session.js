@@ -34,7 +34,6 @@ router.post(
       err.errors = ["The provided credentials were invalid."];
       return next(err);
     }
-    console.log('THING', res, user)
     await setTokenCookie(res, user);
 
     return res.json({
