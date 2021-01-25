@@ -33,7 +33,7 @@ export async function fetch(url, options = {}) {
   // next promise chain
   return res;
 }
-
 export function restoreCSRF() {
-  return fetch('/api/csrf/restore');
+  return fetch("/api/csrf/restore");
 }
+
