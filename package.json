@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/MeeraMeera1/Mumblr2.0/issues"
   },
-  "homepage": "https://github.com/MeeraMeera1/Mumblr2.0#readme"
+  "homepage": "https://github.com/MeeraMeera1/Mumblr2.0#readme",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.2"
+  }
 }
