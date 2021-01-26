@@ -12,6 +12,7 @@ function SignupFormPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+   const [image, setImage] = useState(null);
   const [errors, setErrors] = useState([]);
 
   if (sessionUser) return <Redirect to="/" />;
@@ -21,7 +22,7 @@ function SignupFormPage() {
     if (password === confirmPassword) {
       setErrors([]);
       return dispatch(
-        sessionActions.signup({ email, username, password })
+        sessionActions.signup({ email, username, password, image })
       ).catch((res) => {
         if (res.data && res.data.errors) setErrors(res.data.errors);
       });
@@ -31,8 +32,17 @@ function SignupFormPage() {
     ]);
   };
 
+  const updateFile = (e) => {
+    const file = e.target.files[0];
+    if (file) setImage(file);
+  };
+
+
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      style={{ display: "flex", flexFlow: "column" }}
+      onSubmit={handleSubmit}
+    >
       <ul>
         {errors.map((error, idx) => (
           <li key={idx}>{error}</li>
@@ -73,6 +83,9 @@ function SignupFormPage() {
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
         />
+      </label>
+      <label>
+        <input type="file" onChange={updateFile} />
       </label>
       <button type="submit">Sign Up</button>
     </form>

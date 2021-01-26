@@ -4,6 +4,7 @@ const cors = require('cors');
 const csurf = require('csurf');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 const { environment } = require('./config');
 const { ValidationError } = require('sequelize');
 const routes = require('./routes');
@@ -17,8 +18,11 @@ const app = express();
 app.use(morgan('dev'));
 //for parsing cookies 
 app.use(cookieParser());
-//for parsing JSON bodies of requests with content type of "application/json"
-app.use(express.json());
+// //for parsing JSON bodies of requests with content type of "application/json"
+// app.use(express.json());
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 // Security Middleware
 if (!isProduction) {
