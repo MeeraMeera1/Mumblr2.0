@@ -11,16 +11,19 @@ module.exports = {
           email: "glomum@gmail.com",
           username: "GLOBUG",
           hashedPassword: bcrypt.hashSync("password"),
+          avatar: faker.image.imageUrl(),
         },
         {
           email: faker.internet.email(),
           username: "imposter1",
           hashedPassword: bcrypt.hashSync(faker.internet.password()),
+          avatar: faker.image.imageUrl(),
         },
         {
           email: faker.internet.email(),
           username: "imposter2",
           hashedPassword: bcrypt.hashSync(faker.internet.password()),
+          avatar: faker.image.imageUrl(),
         },
       ],
       {}
