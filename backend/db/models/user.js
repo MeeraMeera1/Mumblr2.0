@@ -118,8 +118,8 @@ module.exports = (sequelize, DataTypes) => {
       { foreignKey: 'followedId'}
     ].forEach(fkey => User.hasMany(models.Follow, fkey));
 
-    [models.User, {through: models.Follow, as: 'userId', foreignKey:'followedId', otherKey: 'userId'}],
-    [models.User, { through: models.Follow, as: 'followedId', foreignKey: 'userId', otherKey: 'followedId' }]
+    [[models.User, { through: models.Follow, as: 'userId', foreignKey:'followedId', otherKey: 'userId' }],
+    [models.User, { through: models.Follow, as: 'followedId', foreignKey: 'userId', otherKey: 'followedId' }]]
     .forEach(map => User.belongsToMany(...map));
   };
   return User;

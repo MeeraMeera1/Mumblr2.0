@@ -70,7 +70,7 @@ export const logout = () => async (dispatch) => {
     return res;
 };
 
-const initialState = { user: null };
+const initialState = {};
 
 const sessionReducer = (state = initialState, action) => {
     let newState;

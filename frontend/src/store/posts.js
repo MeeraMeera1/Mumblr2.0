@@ -2,6 +2,7 @@ import { fetch } from './csrf';
 
 const ALL_POSTS = 'posts/allposts';
 const CREATE_POST = 'posts/createPost';
+// const DELETE_POST = 'posts/deletePost';
 
 const allPosts = (posts) => {
     return {
@@ -14,8 +15,15 @@ const createPost = (post) => {
     return {
         type: CREATE_POST,
         post
-    }
-}
+    };
+};
+
+// const deletePost = (post) => {
+//     return {
+//         type: DELETE_POST,
+//         post,
+//     };
+// };
 
 export const getAllPosts = () => {
     return async (dispatch) => {
@@ -29,15 +37,25 @@ export const getAllPosts = () => {
 export const post = (newPost) => {
     // const { images, image, username, email, password } = user;
     return async (dispatch) => {
-        const res = await fetch("api/posts", {
+        const postRes = await fetch("api/posts", {
             method: "POST",
             body: JSON.stringify(newPost)
         });
-        dispatch(createPost(res.data));
+        if(postRes.data) dispatch(createPost(postRes.data));
     };
 };
 
-const initialState = { posts: null };
+// export const trashPost = (post) => {
+//     return async (dispatch) => {
+//         const postRes = await fetch(`/api/posts/delete-post/${post.postId}`,{
+//             method: 'DELETE',
+//             body: JSON.stringify(post)
+//         })
+//         if(postRes.data) dispatch(deletePost(post));
+//     }
+// }
+
+const initialState = {};
 
 const postReducer = (state = initialState, action) => {
     let newState;
@@ -48,6 +66,8 @@ const postReducer = (state = initialState, action) => {
         case CREATE_POST:
             newState = { ...state, post: action.post };
             return newState;
+        // case DELETE_POST:
+        //     newState = 
         default:
             return state;
             
