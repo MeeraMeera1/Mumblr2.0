@@ -55,7 +55,15 @@ export const post = (newPost) => {
 //     }
 // }
 
-const initialState = {};
+const initialState = 
+    [{
+        userId: 5,
+        title: 'Momma meera MOM',
+        body:'mom mom mom fun sun bun',
+        urlContent: null,
+        type: 'text',
+        tags: null,
+    }];
 
 const postReducer = (state = initialState, action) => {
     let newState;
