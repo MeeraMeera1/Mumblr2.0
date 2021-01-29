@@ -1,13 +1,7 @@
 import { fetch } from "./csrf.js";
 
-const DISPLAY_POSTS = "posts/DISPLAY_POSTS";
 const TOGGLE_LIKE = "posts/TOGGLE_LIKE";
 const DISPLAY_LIKES = "posts/DISPLAY_LIKES";
-
-const setAllPosts = (posts) => ({
-  type: DISPLAY_POSTS,
-  posts,
-});
 
 const setAllLikes = (posts) => ({
   type: DISPLAY_LIKES,
@@ -20,11 +14,6 @@ const toggleLike = (singlePost) => ({
 });
 
 //THUNK
-export const displayAllPosts = () => async (dispatch) => {
-  const res = await fetch("/api/dashboard/posts");
-  const posts = res.data;
-  dispatch(setAllPosts(posts));
-};
 
 export const displayAllLikes = () => async (dispatch) => {
   const allPostRes = await fetch("/api/dashboard/posts");
@@ -59,27 +48,15 @@ export const displayAllLikes = () => async (dispatch) => {
 export const setLike = (post) => async (dispatch) => {
   await fetch("/api/dashboard/posts/like", {
     method: "POST",
-    body: JSON.stringify(post),
+    body: post,
   });
   dispatch(toggleLike(post));
 };
 
-const initialState = [{
-  id: 5,
-  userId: 1,
-  username: 'GLOBUG',
-  likedPost: null,
-  postId: 1,
-  postType: 'text',
-  title: 'Momma meera MOM',
-  description: 'mom mom mom fun sun bun',
-  src: null,
-}];
+const initialState = [];
 //REDUCER
-const reducer = (state = [initialState], action) => {
+const dashboardReducer = (state = [initialState], action) => {
   switch (action.type) {
-    case DISPLAY_POSTS:
-      return action.posts;
     case DISPLAY_LIKES:
       return action.posts;
     case TOGGLE_LIKE:
@@ -89,4 +66,4 @@ const reducer = (state = [initialState], action) => {
   }
 };
 
-export default reducer;
+export default dashboardReducer;

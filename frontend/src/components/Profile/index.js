@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 // import PhotoDisplay from "../PhotoDisplay";
 import TextDisplay from "../DashboardPage/components/text";
 // import AudioDisplay from "../AudioDisplay";
-import { displayAllPosts } from "../../store/dashboard";
+import { getAllPosts } from "../../store/posts";
 
 const Profile = () => {
   const sessionUser = useSelector((state) => state.session.user);
@@ -14,7 +14,7 @@ const Profile = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    dispatch(displayAllPosts()).then(() => setIsLoaded(true));
+    dispatch(getAllPosts()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
   console.log(posts);

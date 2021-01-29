@@ -27,10 +27,10 @@ const createPost = (post) => {
 
 export const getAllPosts = () => {
     return async (dispatch) => {
-        const res = await fetch("/api/dashboard");
-        dispatch(
-            allPosts(res.data)
-        );
+       const res = await fetch("/api/dashboard/posts");
+       const posts = res.data;
+       console.log(posts);
+       dispatch(allPosts(posts));
     };
 };
 
@@ -39,7 +39,7 @@ export const post = (newPost) => {
     return async (dispatch) => {
         const postRes = await fetch("api/posts", {
             method: "POST",
-            body: JSON.stringify(newPost)
+            body: newPost
         });
         if(postRes.data) dispatch(createPost(postRes.data));
     };
@@ -69,10 +69,9 @@ const postReducer = (state = initialState, action) => {
     let newState;
     switch(action.type) {
         case ALL_POSTS:
-            newState = {...state, posts: action.posts};
-            return newState;
+            return action.posts;
         case CREATE_POST:
-            newState = { ...state, post: action.post };
+            newState = [...state, action.post];
             return newState;
         // case DELETE_POST:
         //     newState = 

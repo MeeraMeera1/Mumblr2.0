@@ -7,11 +7,10 @@ const router = express.Router();
 router.get(
   "/posts",
   asyncHandler(async (req, res) => {
-    const postObj = await db.PostContent.findAll({
-      include: db.Post,
+    const postObj = await db.Post.findAll({
       order: [["updatedAt", "DESC"]],
     });
-    const postTypesObj = await db.PostType.findAll();
+    const postTypesObj = await db.Post.findAll();
     const usersObj = await db.User.findAll();
     const likedPostsObj = await db.Like.findAll();
 

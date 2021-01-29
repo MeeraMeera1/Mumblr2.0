@@ -3,22 +3,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 // import "./Dashboard.css";
 import displayPost from "./components/displayposttype";
-import { displayAllPosts } from "../../store/dashboard";
+import { getAllPosts } from "../../store/posts";
 
 function Dashboard() {
   const sessionUser = useSelector((state) => state.session.user);
-  const posts = useSelector((state) => state.posts);
   const dispatch = useDispatch();
-  // const [isLoaded, setIsLoaded] = useState(false);
 
-  // useEffect(() => {
-  //   dispatch(displayAllPosts()).then(() => setIsLoaded(true));
-  // }, [dispatch]);
+  const currentPosts = useSelector((reduxState) => {
+    return reduxState.posts;
+  });
+
+  const newPost = useSelector((reduxState) => {
+    return reduxState.posts;
+  });
 
   useEffect(() => {
-    setTimeout(() => {
-      dispatch(displayAllPosts());
-    }, 500);
+      dispatch(getAllPosts());
   }, [dispatch]);
 
   if (!sessionUser) return <Redirect to="/" />;
@@ -28,7 +28,7 @@ function Dashboard() {
       {/* { isLoaded && ( */}
       <div>
         <div className="spacer"></div>
-        {posts.map((post, idx) => {
+        {currentPosts.map((post, idx) => {
           return displayPost(post, idx);
         })}
       </div>

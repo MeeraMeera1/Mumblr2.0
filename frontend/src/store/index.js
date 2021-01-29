@@ -3,12 +3,14 @@ import thunk from "redux-thunk";
 
 import sessionReducer from './session';
 import postReducer from "./posts";
+import dashboardReducer from "./dashboard";
 
 
 const rootReducer = combineReducers({
   // add reducer functions here
   session: sessionReducer,
-  posts: postReducer
+  posts: postReducer,
+  dashboard: dashboardReducer
 });
 
 let enhancer;
