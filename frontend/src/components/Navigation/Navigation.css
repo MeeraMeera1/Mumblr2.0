@@ -1,0 +1,44 @@
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  margin: 40px 30px 50px 30px;
+  height: 100px;
+}
+.nav-bar > div {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: no-wrap;
+  flex-direction: row;
+}
+.nav-bar > div > a {
+  text-decoration: none;
+  color: white;
+  font-family: Arial;
+  margin-right: 30px;
+}
+.nav-bar > div > a:hover {
+  transform: scale(1.03);
+}
+
+.user-navbar {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+}
+
+.nav-links > a > img {
+    margin-left: 30px;
+
+}
+
+.profile-button {
+  outline: inherit;
+  border: none;
+  background-color: transparent;
+}
+
+.profile-dropdown {
+  position: relative;
+}

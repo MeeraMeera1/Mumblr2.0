@@ -7,6 +7,7 @@ import Navigation from "./components/Navigation";
 import CreatePostForm from "./components/CreatePostPage";
 import Dashboard from "./components/DashboardPage";
 import Profile from "./components/Profile";
+import HomePage from "./components/HomePage";
 import * as sessionActions from "./store/session";
 
 
@@ -24,6 +25,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact path="/">
+            <HomePage />
+          </Route>
           <Route exact path="/login">
             <LoginFormPage />
           </Route>
@@ -39,13 +43,13 @@ function App() {
           <Route path="/dashboard">
             <Dashboard />
           </Route>
-            {sessionUser && (
-              <>
-                <Route path={`/${sessionUser.username}/posts`} >
-                  <Profile />
-                </Route>
-              </>
-            )}
+          {sessionUser && (
+            <>
+              <Route path={`/${sessionUser.username}/posts`}>
+                <Profile />
+              </Route>
+            </>
+          )}
         </Switch>
       )}
     </>

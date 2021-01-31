@@ -1,40 +1,64 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useEffect } from 'react';
+import { NavLink } from "react-router-dom";
 import { Redirect } from "react-router-dom";
-// import "./Dashboard.css";
-import displayPost from "./components/displayposttype";
-import { getAllPosts } from "../../store/posts";
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllPosts } from '../../store/posts';
+import Text from './text-post.png';
+import Photo from './pic-post.png';
+import Quote from './quote-post.png';
+import LinkPost from './link-post.png';
+import Audio from './audio-post.png';
+import Video from './video-post.png';
+import './DashboardPage.css';
 
-function Dashboard() {
+function DashboardPage() {
   const sessionUser = useSelector((state) => state.session.user);
+  const posts = useSelector((state) => state.posts)
   const dispatch = useDispatch();
 
-  const currentPosts = useSelector((reduxState) => {
-    return reduxState.posts;
-  });
-
-  const newPost = useSelector((reduxState) => {
-    return reduxState.posts;
-  });
-
   useEffect(() => {
-      dispatch(getAllPosts());
+    dispatch(getAllPosts());
   }, [dispatch]);
-
+  
+  
+  
   if (!sessionUser) return <Redirect to="/" />;
+  console.log("posts", posts);
 
   return (
-    <>
-      {/* { isLoaded && ( */}
-      <div>
-        <div className="spacer"></div>
-        {currentPosts.map((post, idx) => {
-          return displayPost(post, idx);
+    <div className="dashboard-container">
+      <div className="thumbnails">
+        <NavLink to="/new/text">
+          <img src={Text} alt="textpost" />
+        </NavLink>
+        <NavLink to="/new/image">
+          <img src={Photo} alt="imagepost" />
+        </NavLink>
+        <img src={Quote} alt="quotepost" />
+        <img src={LinkPost} alt="Linkpost" />
+        <img src={Audio} alt="audiopost" />
+        <img src={Video} alt="videopost" />
+      </div>
+      <div className="post-container">
+        { posts &&
+        posts.map((post) => {
+          return (
+            <div className="post">
+              <NavLink to={`/blog/${sessionUser.id}`}>
+                {sessionUser.username}
+              </NavLink>
+              <h1>{post.title}</h1>
+              <p>{post.body}</p>
+              <img src={post.urlContent} alt="userpost" />
+              <audio controls>
+                <source src={post.urlContent} type="audio/mpeg" />
+              </audio>
+            </div>
+          );
         })}
       </div>
-      {/* )} */}
-    </>
+    </div>
   );
 }
 
-export default Dashboard;
+export default DashboardPage;

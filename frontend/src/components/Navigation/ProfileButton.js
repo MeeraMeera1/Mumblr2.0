@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
+// import editButton from '../../../src/img/edit-button.png';
+// import chatBubble from '../../../src/img/chat-bubble-button.png';
+// import homeButton from '../../../src/home-button.png';
+// import mailButton from '../../../src/img/mail-button.png';
+import avatar from '../../../src/img/profile-button.png'; 
+import './Navigation.css'
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -30,8 +36,8 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
+      <button className="profile-button" onClick={openMenu}>
+        <img src={avatar} alt="avatar" />
       </button>
       {showMenu && (
         <ul className="profile-dropdown">

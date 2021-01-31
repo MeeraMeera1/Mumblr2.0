@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
+import mumblr from '../../../src/img/mumblr-title.png';
 import "./Navigation.css";
 
 function Navigation({ isLoaded }) {
@@ -20,14 +21,16 @@ function Navigation({ isLoaded }) {
   }
 
   return (
-    <ul>
-      <li>
+    <>
+      <div className='nav-bar'>
         <NavLink exact to="/">
-          Home
+          <img className="mumblr-logo" alt="mumblr" src={mumblr} />
         </NavLink>
+        <div>
         {isLoaded && sessionLinks}
-      </li>
-    </ul>
+        </div>
+      </div>
+    </>
   );
 }
 

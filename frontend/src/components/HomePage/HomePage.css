@@ -1,0 +1,16 @@
+.homebody {
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+}
+
+.title {
+    color: white;
+    font-size: 60px;
+    margin-left: 50px;
+}
+
+.mom {
+    height: 650px;
+    width: auto;
+}
