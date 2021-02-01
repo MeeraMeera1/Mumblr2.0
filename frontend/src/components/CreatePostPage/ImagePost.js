@@ -7,8 +7,8 @@ const ImagePostForm = () => {
   const history = useHistory({ forceRefresh: true });
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
-  const [src, setSrc] = useState("");
-  const [description, setDescription] = useState("");
+  const [urlContent, setUrlContent] = useState("");
+  const [body, setBody] = useState("");
   const [errors, setErrors] = useState([]);
   const sessionUser = useSelector((state) => state.session.user);
   const pathArray = window.location.pathname.split("/");
@@ -17,12 +17,12 @@ const ImagePostForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    setSrc("");
+    setUrlContent("");
     const imagePost = {
       title,
       postType,
-      description,
-      src,
+      body,
+      urlContent,
       userId: sessionUser.id,
     };
 
@@ -53,9 +53,9 @@ const ImagePostForm = () => {
             <input
               type="text"
               placeholder="Image URL"
-              value={src}
+              value={urlContent}
               onChange={(e) => {
-                setSrc(e.target.value);
+                setUrlContent(e.target.value);
               }}
             />
           </label>
@@ -65,8 +65,8 @@ const ImagePostForm = () => {
             <textarea
               type="text"
               placeholder="Description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
+              value={body}
+              onChange={(e) => setBody(e.target.value)}
             />
           </label>
         </div>

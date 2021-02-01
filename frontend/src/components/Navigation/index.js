@@ -23,7 +23,7 @@ function Navigation({ isLoaded }) {
   return (
     <>
       <div className='nav-bar'>
-        <NavLink exact to="/">
+        <NavLink exact to="/dashboard">
           <img className="mumblr-logo" alt="mumblr" src={mumblr} />
         </NavLink>
         <div>

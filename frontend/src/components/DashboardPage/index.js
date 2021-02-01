@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
@@ -44,15 +44,12 @@ function DashboardPage() {
         posts.map((post) => {
           return (
             <div className="post">
-              <NavLink to={`/blog/${sessionUser.id}`}>
+              <NavLink to={`/${sessionUser.username}/posts`}>
                 {sessionUser.username}
               </NavLink>
               <h1>{post.title}</h1>
               <p>{post.body}</p>
               <img src={post.urlContent} alt="userpost" />
-              <audio controls>
-                <source src={post.urlContent} type="audio/mpeg" />
-              </audio>
             </div>
           );
         })}

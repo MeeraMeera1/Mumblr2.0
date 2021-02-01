@@ -37,9 +37,9 @@ export const getAllPosts = () => {
 export const post = (newPost) => {
     // const { images, image, username, email, password } = user;
     return async (dispatch) => {
-        const postRes = await fetch("api/posts", {
-            method: "POST",
-            body: newPost
+        const postRes = await fetch(`/api/post/create/${newPost.type}`, {
+          method: "POST",
+          body: JSON.stringify(newPost),
         });
         if(postRes.data) dispatch(createPost(postRes.data));
     };
@@ -63,7 +63,7 @@ const postReducer = (state = initialState, action) => {
         case ALL_POSTS:
             return action.posts;
         case CREATE_POST:
-            newState = [...state, action.post];
+            newState = [...state, action.posts];
             return newState;
         // case DELETE_POST:
         //     newState = 

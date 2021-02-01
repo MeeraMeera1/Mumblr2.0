@@ -2,22 +2,25 @@ import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { post } from "../../store/posts";
+import "./postPage.css";
 
 const TextPostForm = () => {
   const history = useHistory({ forceRefresh: true });
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+  const [body, setBody] = useState("");
   const [errors, setErrors] = useState([]);
   const sessionUser = useSelector((state) => state.session.user);
+  const pathArray = window.location.pathname.split("/");
+  const postType = pathArray[pathArray.length - 1];
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
     const textPost = {
       title,
-      postType: "text",
-      description,
+      type: postType,
+      body,
       userId: sessionUser.id,
     };
 
@@ -48,8 +51,8 @@ const TextPostForm = () => {
             <textarea
               type="text"
               placeholder="Description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
+              value={body}
+              onChange={(e) => setBody(e.target.value)}
             />
           </label>
         </div>

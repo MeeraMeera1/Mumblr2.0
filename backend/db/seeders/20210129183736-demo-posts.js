@@ -18,15 +18,18 @@ module.exports = {
           title: "Clone of Tumblr",
           body:
             "Amet massa vitae tortor condimentum lacinia quis vel. Adipiscing enim eu turpis egestas pretium aenean. Pellentesque massa placerat duis ultricies. Maecenas pharetra convallis posuere morbi leo urna molestie at. Nisi scelerisque eu ultrices vitae auctor eu augue. Pharetra sit amet aliquam id. Aenean sed adipiscing diam donec adipiscing. Aliquet risus feugiat in ante metus dictum at. Hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit. Turpis tincidunt id aliquet risus feugiat in ante metus. Neque sodales ut etiam sit amet nisl purus in. Habitant morbi tristique senectus et. Sed viverra ipsum nunc aliquet bibendum. Quam id leo in vitae turpis massa sed. Egestas diam in arcu cursus euismod quis viverra nibh cras. In nisl nisi scelerisque eu ultrices. Maecenas ultricies mi eget mauris pharetra et ultrices neque.",
-          urlContent: "demo_post.png",
+          urlContent:
+            "https://duckduckgo.com/?q=mom.png&iax=images&ia=images&iai=https://image.flaticon.com/icons/png/512/437/437574.png&atb=v255-5__",
           type: "image",
         },
         {
           userId: 3,
           title: "Good morning!",
-          body: "Amet massa vitae tortor condimentum lacinia quis vel. Adipiscing enim eu turpis egestas pretium aenean. Pellentesque massa placerat duis ultricies. Maecenas pharetra convallis posuere morbi leo urna molestie at. Nisi scelerisque eu ultrices vitae auctor eu augue. Pharetra sit amet aliquam id. Aenean sed adipiscing diam donec adipiscing. Aliquet risus feugiat in ante metus dictum at. Hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit. Turpis tincidunt id aliquet risus feugiat in ante metus. Neque sodales ut etiam sit amet nisl purus in. Habitant morbi tristique senectus et. Sed viverra ipsum nunc aliquet bibendum. Quam id leo in vitae turpis massa sed. Egestas diam in arcu cursus euismod quis viverra nibh cras. In nisl nisi scelerisque eu ultrices. Maecenas ultricies mi eget mauris pharetra et ultrices neque.",
-          urlContent: "demo_audio.mp3",
-          type: "audio",
+          body:
+            "Amet massa vitae tortor condimentum lacinia quis vel. Adipiscing enim eu turpis egestas pretium aenean. Pellentesque massa placerat duis ultricies. Maecenas pharetra convallis posuere morbi leo urna molestie at. Nisi scelerisque eu ultrices vitae auctor eu augue. Pharetra sit amet aliquam id. Aenean sed adipiscing diam donec adipiscing. Aliquet risus feugiat in ante metus dictum at. Hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit. Turpis tincidunt id aliquet risus feugiat in ante metus. Neque sodales ut etiam sit amet nisl purus in. Habitant morbi tristique senectus et. Sed viverra ipsum nunc aliquet bibendum. Quam id leo in vitae turpis massa sed. Egestas diam in arcu cursus euismod quis viverra nibh cras. In nisl nisi scelerisque eu ultrices. Maecenas ultricies mi eget mauris pharetra et ultrices neque.",
+          urlContent:
+            "https://bookshelfbattle.files.wordpress.com/2017/05/super-mom.png",
+          type: "image",
         },
       ],
       {}

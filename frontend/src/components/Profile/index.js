@@ -1,45 +1,31 @@
-import { useSelector, useDispatch } from "react-redux";
-import { Redirect } from "react-router-dom";
-import { useEffect, useState } from "react";
-// import VideoDisplay from "../VideoDisplay";
-// import PhotoDisplay from "../PhotoDisplay";
-import TextDisplay from "../DashboardPage/components/text";
-// import AudioDisplay from "../AudioDisplay";
-import { getAllPosts } from "../../store/posts";
+import React, {useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllPosts } from '../../store/posts';
 
-const Profile = () => {
-  const sessionUser = useSelector((state) => state.session.user);
-  const posts = useSelector((state) => state.dashboard);
+function Profile() {
   const dispatch = useDispatch();
-  const [isLoaded, setIsLoaded] = useState(false);
 
+  const currentPosts = useSelector(state => {
+    return state.posts;
+  });
+  
   useEffect(() => {
-    dispatch(getAllPosts()).then(() => setIsLoaded(true));
+    dispatch( getAllPosts());
   }, [dispatch]);
-
-  console.log(posts);
-  if (!sessionUser) return <Redirect to="/" />;
 
   return (
     <div>
-      {isLoaded && (
-        <>
-          <div className="spacer"></div>
-          {posts.map((post, idx) => {
-            // if (sessionUser.id === post.userId && post.postType[0] === "audio")
-            //   return <AudioDisplay post={post} />;
-            // if (sessionUser.id === post.userId && post.postType[0] === "video")
-            //   return <VideoDisplay post={post} />;
-            // if (sessionUser.id === post.userId && post.postType[0] === "photo")
-            //   return <PhotoDisplay post={post} />;
-            if (sessionUser.id === post.userId && post.postType[0] === "text")
-              return <TextDisplay post={post} />;
-            else return null;
-          })}
-        </>
-      )}
+      {currentPosts && currentPosts.map(post => {
+        return (
+          <div className="post">
+            <h1>{post.title}</h1>
+            <p>{post.body}</p>
+            <img src={post.urlContent} alt="urlContent"/>
+          </div>
+        )
+      })}
     </div>
   );
-};
+}
 
 export default Profile;

@@ -44,9 +44,5 @@ router.get(
   })
 );
 
-router.get(
-  "/:user/posts",
-  asyncHandler(async (req, res) => {})
-);
 
 module.exports = router;
